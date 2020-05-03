@@ -1,17 +1,27 @@
-package com.smartroom.springServer.documents;
+package com.smartroom.springServer.dtos;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.smartroom.springServer.documents.Picture;
+
 import java.util.Date;
-public class Video {
-    @Id
-    @GeneratedValue
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class PictureDto {
     private Long id;
     private String owner;
     private Date uploadTime;
 
-    protected Video() { }
+    public PictureDto() {
+    }
 
-    public Video(String owner, Date uploadTime) {
+    public PictureDto(Picture picture) {
+        this.id = picture.getId();
+        this.owner = picture.getOwner();
+        this.uploadTime = picture.getUploadTime();
+    }
+
+    public PictureDto(Long id, String owner, Date uploadTime) {
+        this.id = id;
         this.owner = owner;
         this.uploadTime = uploadTime;
     }
