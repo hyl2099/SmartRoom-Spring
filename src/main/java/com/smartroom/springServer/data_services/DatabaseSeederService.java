@@ -9,7 +9,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -19,7 +18,6 @@ public class DatabaseSeederService {
     public static final String VARIOUS_CODE = "1";
     public static final String VARIOUS_NAME = "Various";
     public static final String CUSTOMER_POINTS_CODE = "0";
-    public static final String CUSTOMER_POINTS_NAME = "Customer points";
 
     @Value("${miw.admin.mobile}")
     private String mobile;
