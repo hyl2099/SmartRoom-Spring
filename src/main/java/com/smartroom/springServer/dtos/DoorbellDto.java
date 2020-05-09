@@ -8,7 +8,7 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class DoorbellDto {
-    private Long id;
+    private String id;
     private Date ringTime;
     private Picture picture;
 
@@ -22,17 +22,17 @@ public class DoorbellDto {
         this.picture = doorbell.getPicture();
     }
 
-    public DoorbellDto(Long id, Date ringTime, Picture picture) {
+    public DoorbellDto(String id, Date ringTime, Picture picture) {
         this.id = id;
         this.ringTime = ringTime;
         this.picture = picture;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Doorbell {
     @Id
     @GeneratedValue
-    private Long id;
+    private String id;
     private Date ringTime;
 
     @ManyToMany
@@ -18,11 +18,11 @@ public class Doorbell {
         this.picture = picture;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

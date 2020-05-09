@@ -7,7 +7,7 @@ import java.util.Date;
 public class Picture {
     @Id
     @GeneratedValue
-    private Long id;
+    private String id;
     private String owner;
     private Date uploadTime;
 
@@ -19,11 +19,11 @@ public class Picture {
         this.uploadTime = uploadTime;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

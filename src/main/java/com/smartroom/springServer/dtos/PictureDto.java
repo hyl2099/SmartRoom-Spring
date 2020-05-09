@@ -7,7 +7,7 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PictureDto {
-    private Long id;
+    private String id;
     private String owner;
     private Date uploadTime;
 
@@ -20,17 +20,17 @@ public class PictureDto {
         this.uploadTime = picture.getUploadTime();
     }
 
-    public PictureDto(Long id, String owner, Date uploadTime) {
+    public PictureDto(String id, String owner, Date uploadTime) {
         this.id = id;
         this.owner = owner;
         this.uploadTime = uploadTime;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
