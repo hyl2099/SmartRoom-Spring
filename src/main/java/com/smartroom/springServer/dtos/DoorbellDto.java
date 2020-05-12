@@ -10,7 +10,7 @@ import java.util.Date;
 public class DoorbellDto {
     private String id;
     private Date ringTime;
-    private Picture picture;
+    private String picture;
 
     public DoorbellDto() {
         // Empty for framework
@@ -22,7 +22,7 @@ public class DoorbellDto {
         this.picture = doorbell.getPicture();
     }
 
-    public DoorbellDto(String id, Date ringTime, Picture picture) {
+    public DoorbellDto(String id, Date ringTime, String picture) {
         this.id = id;
         this.ringTime = ringTime;
         this.picture = picture;
@@ -44,11 +44,11 @@ public class DoorbellDto {
         this.ringTime = ringTime;
     }
 
-    public Picture getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Picture picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }

@@ -2,6 +2,7 @@ package com.smartroom.springServer.documents;
 
 import javax.persistence.*;
 import java.util.Date;
+@Entity
 public class Video {
     @Id
     @GeneratedValue

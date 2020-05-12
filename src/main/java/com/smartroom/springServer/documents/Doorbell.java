@@ -2,18 +2,19 @@ package com.smartroom.springServer.documents;
 
 import javax.persistence.*;
 import java.util.Date;
+
+@Entity
 public class Doorbell {
     @Id
     @GeneratedValue
     private String id;
     private Date ringTime;
 
-    @ManyToMany
-    private Picture picture;
+    private String picture;
 
     protected Doorbell() { }
 
-    public Doorbell(Date ringTime,Picture picture) {
+    public Doorbell(Date ringTime,String picture) {
         this.ringTime = ringTime;
         this.picture = picture;
     }
@@ -34,11 +35,11 @@ public class Doorbell {
         this.ringTime = ringTime;
     }
 
-    public Picture getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(Picture picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 }
