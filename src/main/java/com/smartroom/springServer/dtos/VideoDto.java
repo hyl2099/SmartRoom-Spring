@@ -7,9 +7,10 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class VideoDto {
-    private String id;
+    private Long id;
     private String owner;
     private Date uploadTime;
+    private String path;
 
     public VideoDto() {
     }
@@ -18,19 +19,21 @@ public class VideoDto {
         this.id = video.getId();
         this.owner = video.getOwner();
         this.uploadTime = video.getUploadTime();
+        this.path = path;
     }
 
-    public VideoDto(String id, String owner, Date uploadTime) {
+    public VideoDto(Long id, String owner, Date uploadTime,String path) {
         this.id = id;
         this.owner = owner;
         this.uploadTime = uploadTime;
+        this.path = path;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,5 +51,13 @@ public class VideoDto {
 
     public void setUploadTime(Date uploadTime) {
         this.uploadTime = uploadTime;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

@@ -7,23 +7,23 @@ import java.util.Date;
 public class Doorbell {
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
     private Date ringTime;
 
-    private String picture;
+    private Long picture;
 
     protected Doorbell() { }
 
-    public Doorbell(Date ringTime,String picture) {
+    public Doorbell(Date ringTime,Long picture) {
         this.ringTime = ringTime;
         this.picture = picture;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -35,11 +35,11 @@ public class Doorbell {
         this.ringTime = ringTime;
     }
 
-    public String getPicture() {
+    public Long getPicture() {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(Long picture) {
         this.picture = picture;
     }
 }
