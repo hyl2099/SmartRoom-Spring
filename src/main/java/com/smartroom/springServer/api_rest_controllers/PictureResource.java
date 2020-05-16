@@ -3,11 +3,10 @@ package com.smartroom.springServer.api_rest_controllers;
 import com.smartroom.springServer.business_controllers.PictureController;
 import com.smartroom.springServer.documents.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
+
+import java.util.Optional;
 
 // 声明为Rest控制器（支持前后台分离)
 @RestController
@@ -33,8 +32,26 @@ public class PictureResource {
         return pictureController.savePicture(picture);
     }
 
-    @GetMapping
-    public Flux<Picture> readAll(){
+    @GetMapping("/pictures/all")
+    public Iterable<Picture> readAll(){
         return pictureController.readAll();
     }
+
+    // @GetMapping 表明该方法只接收 get 请求.
+    @GetMapping("/pictures/{id}")
+    public Optional<Picture> findPictureById(@PathVariable Long id){
+        return pictureController.findPictureById(id);
+    }
+
+    // @PutMapping 表明该方法只接收 put 请求.
+    @PutMapping("/pictures/{id}")
+    public Picture updatePicture(@PathVariable Long id,@RequestBody Picture picture){
+        return this.pictureController.updatePicture(id, picture);
+    }
+
+    @DeleteMapping("pictures/{id}")
+    public void deleteTeacher(@PathVariable Long id) {
+        this.pictureController.deletePicture(id);
+    }
+
 }
