@@ -1,7 +1,9 @@
 package com.smartroom.springServer.data_services;
 
 
+import com.smartroom.springServer.documents.Doorbell;
 import com.smartroom.springServer.documents.Picture;
+import com.smartroom.springServer.documents.Video;
 import com.smartroom.springServer.repositories.DoorbellRepository;
 import com.smartroom.springServer.repositories.PictureRepository;
 import com.smartroom.springServer.repositories.VideoRepository;
@@ -52,5 +54,19 @@ public class DatabaseSeederService {
         };
         this.pictureRepository.saveAll(Arrays.asList(picture));
         LogManager.getLogger(this.getClass()).warn("        ------- picture");
+
+        Video[] video = {
+                new Video("aaa", new Date(),"------------"),
+                new Video("bbb", new Date(),"------------")
+        };
+        this.videoRepository.saveAll(Arrays.asList(video));
+        LogManager.getLogger(this.getClass()).warn("        ------- video");
+
+        Doorbell[] doorbell = {
+                new Doorbell(new Date(),(long)1),
+                new Doorbell(new Date(),(long)2)
+        };
+        this.doorbellRepository.saveAll(Arrays.asList(doorbell));
+        LogManager.getLogger(this.getClass()).warn("        ------- doorbell");
     }
 }

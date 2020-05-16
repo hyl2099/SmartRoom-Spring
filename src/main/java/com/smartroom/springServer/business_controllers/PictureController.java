@@ -41,9 +41,7 @@ public class PictureController {
     }
 
     public void deletePicture(Long id) {
-//        Picture picture = pictureRepository.findById(id);
         this.pictureRepository.deleteById(id);
-        return;
     }
 
 }
