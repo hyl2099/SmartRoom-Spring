@@ -1,7 +1,6 @@
 package com.smartroom.springServer.api_rest_controllers;
 
 import com.smartroom.springServer.documents.Picture;
-import com.smartroom.springServer.dtos.PictureDto;
 import com.smartroom.springServer.repositories.PictureRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
