@@ -17,7 +17,6 @@ public class User {
     @Id
     @GeneratedValue
     private Long id;
-    @UniqueElements
     private String email;
     private String mobile;
     private LocalDateTime registrationDate;
@@ -31,10 +30,6 @@ public class User {
     public User() {
         this.registrationDate = LocalDateTime.now();
         this.active = true;
-    }
-
-    public static Builder builder() {
-        return new Builder();
     }
 
     public Long getId() {
@@ -137,64 +132,5 @@ public class User {
                 ", address='" + address + '\'' +
                 ", roles=" + Arrays.toString(roles) +
                 '}';
-    }
-
-    public static class Builder {
-        private User user;
-
-        private Builder() {
-            this.user = new User();
-            this.user.setPassword(null);
-            this.user.roles = new Role[]{Role.CUSTOMER};
-        }
-
-        public Builder mobile(String mobile) {
-            this.user.mobile = mobile;
-            return this;
-        }
-
-        public Builder registrationDate(LocalDateTime registrationDate) {
-            this.user.registrationDate = registrationDate;
-            return this;
-        }
-
-        public Builder username(String username) {
-            this.user.username = username;
-            return this;
-        }
-
-        public Builder password(String password) {
-            this.user.setPassword(password);
-            return this;
-        }
-
-        public Builder active(Boolean active) {
-            this.user.active = active;
-            return this;
-        }
-
-        public Builder email(String email) {
-            this.user.email = email;
-            return this;
-        }
-
-        public Builder dni(String dni) {
-            this.user.dni = dni;
-            return this;
-        }
-
-        public Builder address(String address) {
-            this.user.address = address;
-            return this;
-        }
-
-        public Builder roles(Role... roles) {
-            this.user.roles = roles;
-            return this;
-        }
-
-        public User build() {
-            return this.user;
-        }
     }
 }

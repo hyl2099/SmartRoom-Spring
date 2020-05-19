@@ -45,6 +45,10 @@ public class UserDto extends UserMinimumDto {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getDni() {
         return dni;
     }

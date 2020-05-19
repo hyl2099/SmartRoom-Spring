@@ -1,14 +1,14 @@
 package com.smartroom.springServer.data_services;
 
 
-import com.smartroom.springServer.documents.Doorbell;
-import com.smartroom.springServer.documents.Picture;
-import com.smartroom.springServer.documents.Video;
+import com.smartroom.springServer.documents.*;
 import com.smartroom.springServer.repositories.DoorbellRepository;
 import com.smartroom.springServer.repositories.PictureRepository;
+import com.smartroom.springServer.repositories.UserRepository;
 import com.smartroom.springServer.repositories.VideoRepository;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -24,13 +24,23 @@ import java.util.Date;
 @Service
 public class DatabaseSeederService {
 
+    @Value("${smartroom.admin.mobile}")
+    private String mobile;
+    @Value("${smartroom.admin.username}")
+    private String username;
+    @Value("${smartroom.admin.password}")
+    private String password;
+
+
+    private UserRepository userRepository;
     private PictureRepository pictureRepository;
     private VideoRepository videoRepository;
     private DoorbellRepository doorbellRepository;
 
     //自动注入PictureRepository,VideoRepository,DoorbellRepository
     @Autowired
-    public DatabaseSeederService(PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
+    public DatabaseSeederService(UserRepository userRepository,PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
+        this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
         this.videoRepository = videoRepository;
         this.doorbellRepository = doorbellRepository;
@@ -44,6 +54,16 @@ public class DatabaseSeederService {
 
     private void initialize() {
         this.seedDataBaseJava();
+    }
+
+    public void deleteAllAndInitialize() {
+        LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
+        // Delete Repositories -----------------------------------------------------
+        this.pictureRepository.deleteAll();
+        this.userRepository.deleteAll();
+        this.videoRepository.deleteAll();
+        this.doorbellRepository.deleteAll();
+        this.initialize();
     }
 
     public void seedDataBaseJava() {
