@@ -1,24 +1,15 @@
 package com.smartroom.springServer.business_controllers;
 
 import com.smartroom.springServer.business_services.JwtService;
-import com.smartroom.springServer.documents.Picture;
-import com.smartroom.springServer.documents.Role;
 import com.smartroom.springServer.documents.User;
 import com.smartroom.springServer.dtos.TokenOutputDto;
-import com.smartroom.springServer.dtos.UserCredentialDto;
-import com.smartroom.springServer.dtos.UserDto;
-import com.smartroom.springServer.dtos.UserMinimumDto;
-import com.smartroom.springServer.repositories.UserRepository;
 
 import com.smartroom.springServer.exceptions.ForbiddenException;
-import com.smartroom.springServer.exceptions.NotFoundException;
+import com.smartroom.springServer.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -34,13 +25,11 @@ public class UserController {
     }
 
     //login 返回一个token
-    //不支持反应式,no reactive driver for MySQl
     public TokenOutputDto login(String email) {
         if (userRepository.findByEmail(email) == null) {
             throw new EntityNotFoundException("the email :" + email.toString() + "Wrong, no entity.");
         }else{
-            String[] roles = Arrays.stream(userRepository.findByEmail(email).getRoles()).map(Role::name).toArray(String[]::new);
-            return new TokenOutputDto(jwtService.createToken(userRepository.findByEmail(email).getEmail(), userRepository.findByEmail(email).getUsername(), roles));
+            return new TokenOutputDto(jwtService.createToken(userRepository.findByEmail(email).getEmail(), userRepository.findByEmail(email).getUsername()));
         }
     }
 
@@ -76,9 +65,6 @@ public class UserController {
         return this.userRepository.save(user);
     }
 
-//    public Iterable<User> readUser(String email, String claimEmail, List<String> claimRoles) {
-//        return this.userRepository.findAllUsers();
-//    }
 
     public Iterable<User> readAll() {
         return this.userRepository.findAll();
@@ -87,19 +73,25 @@ public class UserController {
     public User updateUser(String email, User user) {
         if (userRepository.findByEmail(email) == null) {
             throw new EntityNotFoundException("the email :" + email.toString() + "Wrong, no entity.");
+        }else{
+            user.setEmail(email);
+            return this.userRepository.save(user);
         }
-        user.setEmail(email);
-        return this.userRepository.save(user);
     }
 
-    public User changePassword(String email, UserCredentialDto userCredentialDto) {
-        //to do
-        return null;
+//    public User changePassword(String email, UserCredentialDto userCredentialDto) {
+//        if (userRepository.findByEmail(email) == null) {
+//            throw new EntityNotFoundException("the email :" + email.toString() + "Wrong, no entity.");
+//        }else{
+//
+//        }
+//    }
+
+    public User findByEmail(String email) {
+        return this.userRepository.findByEmail(email);
     }
 
-
-    public Flux<UserDto> findByEmailOrUsernameOrDniOrAddress(UserDto userDto) {
-        //to do
-        return null;
-    }
+//    public User findByEmailOrUsername(User user) {
+//        return this.userRepository.findByEmailOrUsername(user);
+//    }
 }

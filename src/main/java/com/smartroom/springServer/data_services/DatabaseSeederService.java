@@ -4,7 +4,6 @@ package com.smartroom.springServer.data_services;
 import com.smartroom.springServer.documents.*;
 import com.smartroom.springServer.repositories.DoorbellRepository;
 import com.smartroom.springServer.repositories.PictureRepository;
-import com.smartroom.springServer.repositories.UserRepository;
 import com.smartroom.springServer.repositories.VideoRepository;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,23 +23,21 @@ import java.util.Date;
 @Service
 public class DatabaseSeederService {
 
-    @Value("${smartroom.admin.mobile}")
-    private String mobile;
-    @Value("${smartroom.admin.username}")
-    private String username;
-    @Value("${smartroom.admin.password}")
-    private String password;
+//    @Value("${smartroom.admin.mobile}")
+//    private String mobile;
+//    @Value("${smartroom.admin.username}")
+//    private String username;
+//    @Value("${smartroom.admin.password}")
+//    private String password;
 
 
-    private UserRepository userRepository;
     private PictureRepository pictureRepository;
     private VideoRepository videoRepository;
     private DoorbellRepository doorbellRepository;
 
     //自动注入PictureRepository,VideoRepository,DoorbellRepository
     @Autowired
-    public DatabaseSeederService(UserRepository userRepository,PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
-        this.userRepository = userRepository;
+    public DatabaseSeederService(PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
         this.pictureRepository = pictureRepository;
         this.videoRepository = videoRepository;
         this.doorbellRepository = doorbellRepository;
@@ -60,7 +57,6 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
         this.pictureRepository.deleteAll();
-        this.userRepository.deleteAll();
         this.videoRepository.deleteAll();
         this.doorbellRepository.deleteAll();
         this.initialize();

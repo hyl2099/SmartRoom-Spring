@@ -15,7 +15,6 @@ public class SpringServerApplication {
 		return "Hello World， Spring boot is good";
 	}
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(SpringServerApplication.class, args);
 	}

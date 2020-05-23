@@ -19,9 +19,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     User findByEmail(String email);
 
-    @Query("select id, email, username from User a where a.accountId = ?1")
-    List<UserMinimumDto> findAllUsers();
+//    @Query("select id, email, username from User a where a.accountId = ?1")
+//    List<User> findAllUsers();
 
-
+//    User findByEmailOrUsername(User user);
 
 }

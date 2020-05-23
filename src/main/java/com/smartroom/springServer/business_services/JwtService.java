@@ -26,15 +26,14 @@ public class JwtService {
     private static final String SECRET = "secret-password-test";
 
     //JwtService通过generateToken生成token，通过validateToken校验token
-    public String createToken(String user, String name, String[] roles) {
+    public String createToken(String email, String userName) {
         return JWT.create()
                 .withIssuer(ISSUER)
                 .withIssuedAt(new Date())
                 .withNotBefore(new Date())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRES_IN_MILLISECOND))
-                .withClaim(USER, user)
-                .withClaim(NAME, name)
-                .withArrayClaim(ROLES, roles)
+                .withClaim(USER, email)
+                .withClaim(NAME, userName)
                 .sign(Algorithm.HMAC256(SECRET));
     }
 
