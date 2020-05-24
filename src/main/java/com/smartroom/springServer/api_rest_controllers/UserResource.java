@@ -1,25 +1,28 @@
 package com.smartroom.springServer.api_rest_controllers;
 
+
 import com.smartroom.springServer.business_controllers.UserController;
-import com.smartroom.springServer.documents.User;
+import com.smartroom.springServer.documents.SmartUser;
 import com.smartroom.springServer.dtos.TokenOutputDto;
-import com.smartroom.springServer.dtos.UserCredentialDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.userdetails.User;
 
 import javax.validation.Valid;
 
-@PreAuthorize("hasRole('ADMIN') or hasRole('MANAGER') or hasRole('OPERATOR')")
+
 @RestController
-@RequestMapping(com.smartroom.springServer.api_rest_controllers.UserResource.USERS)
+@RequestMapping(UserResource.USERS)
 public class UserResource {
 
     public static final String USERS = "/users";
     public static final String TOKEN = "/token";
     public static final String EMAIL_ID = "/{email}";
     public static final String SEARCH = "/search";
+    public static final String ALL = "/all";
 
     private UserController userController;
 
@@ -30,28 +33,29 @@ public class UserResource {
 
     @PreAuthorize("authenticated")
     @PostMapping(value = TOKEN)
-    public TokenOutputDto login(@AuthenticationPrincipal User user) {
-        return userController.login(user.getEmail());
+    public TokenOutputDto login(@AuthenticationPrincipal User activeUser) {
+        return userController.login(activeUser.getUsername());
     }
+
 
     //
     @PostMapping
-    public User createUser(@Valid @RequestBody User user) {
+    public SmartUser createUser(@Valid @RequestBody SmartUser user) {
         return userController.createUser(user);
     }
 
     @GetMapping(value = EMAIL_ID)
-    public User read(@PathVariable String email) {
+    public SmartUser read(@PathVariable String email) {
         return userController.findByEmail(email);
     }
 
-    @GetMapping
-    public Iterable<User> readAll() {
+    @GetMapping(value = ALL)
+    public Iterable<SmartUser> readAll() {
         return userController.readAll();
     }
 
     @PutMapping(value = EMAIL_ID)
-    public User updateUser(@PathVariable String email, @Valid @RequestBody User user) {
+    public SmartUser updateUser(@PathVariable String email, @Valid @RequestBody SmartUser user) {
         return userController.updateUser(email, user);
     }
 

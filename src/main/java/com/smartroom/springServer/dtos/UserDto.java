@@ -2,7 +2,7 @@ package com.smartroom.springServer.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.smartroom.springServer.documents.User;
+import com.smartroom.springServer.documents.SmartUser;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class UserDto extends UserMinimumDto {
         // Empty for framework
     }
 
-    public UserDto(User user) {
+    public UserDto(SmartUser user) {
         this.email = user.getEmail();
         this.active = user.isActive();
     }

@@ -4,10 +4,10 @@ package com.smartroom.springServer.data_services;
 import com.smartroom.springServer.documents.*;
 import com.smartroom.springServer.repositories.DoorbellRepository;
 import com.smartroom.springServer.repositories.PictureRepository;
+import com.smartroom.springServer.repositories.UserRepository;
 import com.smartroom.springServer.repositories.VideoRepository;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -23,21 +23,16 @@ import java.util.Date;
 @Service
 public class DatabaseSeederService {
 
-//    @Value("${smartroom.admin.mobile}")
-//    private String mobile;
-//    @Value("${smartroom.admin.username}")
-//    private String username;
-//    @Value("${smartroom.admin.password}")
-//    private String password;
-
 
     private PictureRepository pictureRepository;
     private VideoRepository videoRepository;
     private DoorbellRepository doorbellRepository;
+    private UserRepository userRepository;
 
     //自动注入PictureRepository,VideoRepository,DoorbellRepository
     @Autowired
-    public DatabaseSeederService(PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
+    public DatabaseSeederService(UserRepository userRepository, PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
+        this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
         this.videoRepository = videoRepository;
         this.doorbellRepository = doorbellRepository;
@@ -56,6 +51,7 @@ public class DatabaseSeederService {
     public void deleteAllAndInitialize() {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
+        this.userRepository.deleteAll();
         this.pictureRepository.deleteAll();
         this.videoRepository.deleteAll();
         this.doorbellRepository.deleteAll();
@@ -64,6 +60,16 @@ public class DatabaseSeederService {
 
     public void seedDataBaseJava() {
         LogManager.getLogger(this.getClass()).warn("------- Initial Load from JAVA -----------");
+
+        SmartUser[] users = {
+                SmartUser.builder().email("u000@gmail.com").username("000").password("p000").mobile("000").build(),
+                SmartUser.builder().email("u001@gmail.com").username("001").password("p001").mobile("001").build(),
+                SmartUser.builder().email("u002@gmail.com").username("002").password("p002").mobile("002").build()
+        };
+        this.userRepository.saveAll(Arrays.asList(users));
+        LogManager.getLogger(this.getClass()).warn("        ------- users");
+
+
         Picture[] picture = {
                 new Picture("yuling", new Date(),"------------"),
                 new Picture("yuling", new Date(),"------------")

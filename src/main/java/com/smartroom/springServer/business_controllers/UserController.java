@@ -1,7 +1,7 @@
 package com.smartroom.springServer.business_controllers;
 
 import com.smartroom.springServer.business_services.JwtService;
-import com.smartroom.springServer.documents.User;
+import com.smartroom.springServer.documents.SmartUser;
 import com.smartroom.springServer.dtos.TokenOutputDto;
 
 import com.smartroom.springServer.exceptions.ForbiddenException;
@@ -34,7 +34,7 @@ public class UserController {
     }
 
     //
-    private User readAndValidate(String email, String claimEmail, List<String> claimRoles) {
+    private SmartUser readAndValidate(String email, String claimEmail, List<String> claimRoles) {
         if (userRepository.findByEmail(email) == null) {
             throw new EntityNotFoundException("the email :" + email.toString() + "Wrong, no entity.");
         }else{
@@ -60,17 +60,17 @@ public class UserController {
         }else return true;
     }
 
-    //创建用户
-    public User createUser(User user) {
+    //创建用户,
+    public SmartUser createUser(SmartUser user) {
         return this.userRepository.save(user);
     }
 
 
-    public Iterable<User> readAll() {
+    public Iterable<SmartUser> readAll() {
         return this.userRepository.findAll();
     }
 
-    public User updateUser(String email, User user) {
+    public SmartUser updateUser(String email, SmartUser user) {
         if (userRepository.findByEmail(email) == null) {
             throw new EntityNotFoundException("the email :" + email.toString() + "Wrong, no entity.");
         }else{
@@ -87,7 +87,7 @@ public class UserController {
 //        }
 //    }
 
-    public User findByEmail(String email) {
+    public SmartUser findByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
 

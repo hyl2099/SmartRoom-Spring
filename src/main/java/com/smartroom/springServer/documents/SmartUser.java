@@ -9,7 +9,7 @@ import java.util.UUID;
 
 
 @Entity
-public class User {
+public class SmartUser {
 
     @Id
     @GeneratedValue
@@ -20,9 +20,14 @@ public class User {
     private String password;
     private Boolean active;
 
-    public User() {
+    public SmartUser() {
         this.active = true;
     }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
 
     public Long getId() {
         return id;
@@ -31,8 +36,6 @@ public class User {
     public String getMobile() {
         return mobile;
     }
-
-
 
     public void setMobile(String mobile) {
         this.mobile = mobile;
@@ -82,7 +85,7 @@ public class User {
 
     @Override
     public boolean equals(Object obj) {
-        return this == obj || obj != null && getClass() == obj.getClass() && mobile.equals(((User) obj).mobile);
+        return this == obj || obj != null && getClass() == obj.getClass() && mobile.equals(((SmartUser) obj).mobile);
     }
 
     @Override
@@ -95,5 +98,46 @@ public class User {
                 ", active=" + active +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+
+    public static class Builder {
+        private SmartUser user;
+
+        private Builder() {
+            this.user = new SmartUser();
+            this.user.setPassword(null);
+        }
+
+        public Builder mobile(String mobile) {
+            this.user.mobile = mobile;
+            return this;
+        }
+
+
+
+        public Builder username(String username) {
+            this.user.username = username;
+            return this;
+        }
+
+        public Builder password(String password) {
+            this.user.setPassword(password);
+            return this;
+        }
+
+        public Builder active(Boolean active) {
+            this.user.active = active;
+            return this;
+        }
+
+        public Builder email(String email) {
+            this.user.email = email;
+            return this;
+        }
+
+        public SmartUser build() {
+            return this.user;
+        }
     }
 }
