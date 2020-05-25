@@ -34,10 +34,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         String authHeader = request.getHeader(AUTHORIZATION);
         if (jwtService.isBearer(authHeader)) {
             List<GrantedAuthority> authorities;
-            authorities = jwtService.roles(authHeader).stream()
-                    .map(role -> new SimpleGrantedAuthority(Role.valueOf(role).roleName())).collect(Collectors.toList());
             UsernamePasswordAuthenticationToken authentication =
-                    new UsernamePasswordAuthenticationToken(jwtService.user(authHeader), null, authorities);
+                    new UsernamePasswordAuthenticationToken(jwtService.user(authHeader), null);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         chain.doFilter(request, response);

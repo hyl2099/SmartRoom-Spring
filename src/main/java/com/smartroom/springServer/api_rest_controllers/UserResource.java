@@ -6,7 +6,6 @@ import com.smartroom.springServer.documents.SmartUser;
 import com.smartroom.springServer.dtos.TokenOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.userdetails.User;

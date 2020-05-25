@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
+@SpringBootApplication
+//		(exclude = {SecurityAutoConfiguration.class })
 public class SpringServerApplication {
 
 	@RequestMapping("/hello")

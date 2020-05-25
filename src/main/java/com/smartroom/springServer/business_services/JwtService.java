@@ -20,7 +20,6 @@ public class JwtService {
     private static final String BEARER = "Bearer ";
     private static final String USER = "user";
     private static final String NAME = "name";
-    private static final String ROLES = "roles";
     private static final String ISSUER = "smartroom";
     private static final int EXPIRES_IN_MILLISECOND = 3600000;
     private static final String SECRET = "secret-password-test";
@@ -57,9 +56,5 @@ public class JwtService {
             throw new JwtException("JWT is wrong. " + exception.getMessage());
         }
 
-    }
-
-    public List<String> roles(String authorization) {
-        return Arrays.asList(this.verify(authorization).getClaim(ROLES).asArray(String.class));
     }
 }
