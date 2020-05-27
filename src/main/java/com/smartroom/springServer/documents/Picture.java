@@ -1,6 +1,7 @@
 package com.smartroom.springServer.documents;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.Date;
 
 // 使用@Entity 来说明该类对应一个数据表
@@ -16,14 +17,16 @@ public class Picture {
     private String owner;
     private Date uploadTime;
     private String path;
+    private File photo;
 
 
     public Picture() { }
 
-    public Picture(String owner, Date uploadTime,String path) {
+    public Picture(String owner, Date uploadTime,String path, File photo) {
         this.owner = owner;
         this.uploadTime = uploadTime;
         this.path = path;
+        this.photo = photo;
     }
 
     public Long getId() {
@@ -56,5 +59,13 @@ public class Picture {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(File photo) {
+        this.photo = photo;
     }
 }

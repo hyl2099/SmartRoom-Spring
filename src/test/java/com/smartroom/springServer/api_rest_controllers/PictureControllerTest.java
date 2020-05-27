@@ -22,7 +22,7 @@ public class PictureControllerTest {
 
 
     Picture addPictureTest() {
-        Picture picture = new Picture("Yuling", new Date(), "C:picture.jpg");
+        Picture picture = new Picture("Yuling", new Date(), "C:picture.jpg",null);
         return this.webTestClient
                 .post().uri("/pictures/save")
                 .body(BodyInserters.fromValue(picture))
@@ -34,7 +34,7 @@ public class PictureControllerTest {
 
     @Test
     void testCreate() {
-        Picture picture = new Picture("Yuling", new Date(), "C:picture.jpg");
+        Picture picture = new Picture("Yuling", new Date(), "C:picture.jpg",null);
         Picture picturenew = this.webTestClient
                 .post().uri("/pictures/save")
                 .body(BodyInserters.fromValue(picture))
