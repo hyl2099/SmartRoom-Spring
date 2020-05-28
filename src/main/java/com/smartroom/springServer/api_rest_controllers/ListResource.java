@@ -13,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@CrossOrigin
 @RequestMapping("/pictures")
 public class ListResource {
     private ListController listController;

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.MultipartConfigElement;
 
 @RestController
-@SpringBootApplication(scanBasePackages={
-		"com.smartroom.springServer.business_controllers","com.smartroom.springServer.data_services","com.smartroom.springServer.business_services"})
+@SpringBootApplication
+//		(scanBasePackages={
+//		"com.smartroom.springServer.business_controllers","com.smartroom.springServer.data_services","com.smartroom.springServer.business_services"})
 //		(exclude = {SecurityAutoConfiguration.class })
 public class SpringServerApplication {
 
