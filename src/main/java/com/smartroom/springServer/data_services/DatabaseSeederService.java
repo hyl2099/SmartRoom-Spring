@@ -71,8 +71,8 @@ public class DatabaseSeederService {
 
 
         Picture[] picture = {
-                new Picture("yuling", new Date(),"------------",null),
-                new Picture("yuling", new Date(),"------------",null)
+                new Picture("yuling", new Date(),"/pictures/1.jpg",null),
+                new Picture("yuling", new Date(),"/pictures/2.jpg",null)
         };
         this.pictureRepository.saveAll(Arrays.asList(picture));
         LogManager.getLogger(this.getClass()).warn("        ------- picture");

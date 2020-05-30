@@ -2,8 +2,10 @@ package com.smartroom.springServer.api_rest_controllers;
 
 import com.smartroom.springServer.business_controllers.PictureController;
 import com.smartroom.springServer.documents.Picture;
+import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
 
 import java.util.Optional;
 
@@ -51,6 +53,11 @@ public class PictureResource {
     @DeleteMapping("pictures/{id}")
     public void deletePicture(@PathVariable Long id) {
         this.pictureController.deletePicture(id);
+    }
+
+    @GetMapping("pictures/photo/{id}")
+    public Optional<byte[]> getPhoto(@PathVariable Long id) {
+        return this.pictureController.getPhoto(id);
     }
 
 }
