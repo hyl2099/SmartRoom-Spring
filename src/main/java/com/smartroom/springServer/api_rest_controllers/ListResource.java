@@ -39,7 +39,7 @@ public class ListResource {
         String originaFilename = file.getOriginalFilename();
         //获取文件的后缀名
         String newFileName = res+originaFilename.substring(originaFilename.lastIndexOf("."));
-        String rootPath = "/images/";
+        String rootPath = "/pictures/";
         File newFile = new File(rootPath+newFileName);
         System.out.println(rootPath+newFileName);
         //定义向数据库中存取的文件路径
