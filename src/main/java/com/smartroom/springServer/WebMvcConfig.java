@@ -14,6 +14,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**").allowedMethods("*").allowedOrigins("*").maxAge(3600);
     }
 
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");

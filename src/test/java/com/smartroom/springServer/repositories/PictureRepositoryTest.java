@@ -20,7 +20,7 @@ public class PictureRepositoryTest {
     @Test
     public void addPicture() {
         // 执行数据保存操作
-        pictureRepository.save(new Picture("Yuling", new Date(), "C:picture.jpg",null));
+        pictureRepository.save(new Picture("Yuling", new Date(), "C:picture.jpg",null,""));
 
         // 打印Spring为我们自动实例化的对象
         System.out.println(pictureRepository);

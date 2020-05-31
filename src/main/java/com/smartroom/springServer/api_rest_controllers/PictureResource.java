@@ -2,11 +2,16 @@ package com.smartroom.springServer.api_rest_controllers;
 
 import com.smartroom.springServer.business_controllers.PictureController;
 import com.smartroom.springServer.documents.Picture;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
 
+import javax.security.auth.Subject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Optional;
 
 // 声明为Rest控制器（支持前后台分离)
@@ -55,8 +60,9 @@ public class PictureResource {
         this.pictureController.deletePicture(id);
     }
 
-    @GetMapping("pictures/photo/{id}")
-    public Optional<byte[]> getPhoto(@PathVariable Long id) {
+    //下载图片API
+    @GetMapping("picturesphoto/{id}")
+    public Optional<byte[]> getPhoto(@PathVariable long id) {
         return this.pictureController.getPhoto(id);
     }
 

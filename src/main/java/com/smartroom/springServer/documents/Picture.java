@@ -17,16 +17,22 @@ public class Picture {
     private String owner;
     private Date uploadTime;
     private String path;
-    private File photo;
+    //@Lob 通常与@Basic同时使用，提高访问速度
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name=" photophoto", columnDefinition="longblob", nullable=true)
+    private byte[] photo;
+    private String remark;
 
 
     public Picture() { }
 
-    public Picture(String owner, Date uploadTime,String path, File photo) {
+    public Picture(String owner, Date uploadTime,String path, byte[] photo, String remark) {
         this.owner = owner;
         this.uploadTime = uploadTime;
         this.path = path;
         this.photo = photo;
+        this.remark = remark;
     }
 
     public Long getId() {
@@ -61,11 +67,19 @@ public class Picture {
         this.path = path;
     }
 
-    public File getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(File photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

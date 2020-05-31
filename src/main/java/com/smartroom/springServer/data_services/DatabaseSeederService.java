@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -39,16 +41,16 @@ public class DatabaseSeederService {
     }
 
     @PostConstruct
-    public void constructor() {
+    public void constructor() throws IOException {
         this.initialize();
     }
 
 
-    private void initialize() {
+    private void initialize() throws IOException {
         this.seedDataBaseJava();
     }
 
-    public void deleteAllAndInitialize() {
+    public void deleteAllAndInitialize() throws IOException {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
         this.userRepository.deleteAll();
@@ -58,7 +60,7 @@ public class DatabaseSeederService {
         this.initialize();
     }
 
-    public void seedDataBaseJava() {
+    public void seedDataBaseJava() throws IOException {
         LogManager.getLogger(this.getClass()).warn("------- Initial Load from JAVA -----------");
 
         SmartUser[] users = {
@@ -70,12 +72,23 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("        ------- users");
 
 
-        Picture[] picture = {
-                new Picture("yuling", new Date(),"/pictures/1.jpg",null),
-                new Picture("yuling", new Date(),"/pictures/2.jpg",null)
-        };
-        this.pictureRepository.saveAll(Arrays.asList(picture));
-        LogManager.getLogger(this.getClass()).warn("        ------- picture");
+        File file = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\i.jpg");
+        File file2 = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\2.jpg");
+        try {
+            byte[] p1 = new byte[(int) file.length()];
+            byte[] p2 = new byte[(int) file2.length()];
+            Picture[] picture = {
+                    new Picture("yuling", new Date(),"/pictures/1.jpg", p1,"init"),
+                    new Picture("yuling", new Date(),"/pictures/2.jpg", p2,"init")
+            };
+            this.pictureRepository.saveAll(Arrays.asList(picture));
+            LogManager.getLogger(this.getClass()).warn("        ------- picture");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
 
         Video[] video = {
                 new Video("aaa", new Date(),"------------"),

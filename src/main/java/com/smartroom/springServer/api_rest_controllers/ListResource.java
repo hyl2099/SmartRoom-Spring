@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -53,6 +55,7 @@ public class ListResource {
             //使用transferTo()方法将文件存到所在服务器上
             file.transferTo(newFile);
         }
+        picture.setPhoto(Files.readAllBytes(Paths.get("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures"+rootPath+newFileName)));
         return listController.add(src,picture);
     }
 }

@@ -11,6 +11,8 @@ public class PictureDto {
     private String owner;
     private Date uploadTime;
     private String path;
+    private byte[] photo;
+    private String remark;
 
 
     public PictureDto() {
@@ -60,5 +62,21 @@ public class PictureDto {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }
