@@ -20,7 +20,7 @@ public class Picture {
     //@Lob 通常与@Basic同时使用，提高访问速度
     @Lob
     @Basic(fetch = FetchType.LAZY)
-    @Column(name=" photophoto", columnDefinition="longblob", nullable=true)
+    @Column(name=" photo", columnDefinition="longblob", nullable=true)
     private byte[] photo;
     private String remark;
 
@@ -82,4 +82,5 @@ public class Picture {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
 }

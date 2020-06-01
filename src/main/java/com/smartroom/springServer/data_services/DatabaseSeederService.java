@@ -72,7 +72,7 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("        ------- users");
 
 
-        File file = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\i.jpg");
+        File file = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\1.jpg");
         File file2 = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\2.jpg");
         try {
             byte[] p1 = new byte[(int) file.length()];
