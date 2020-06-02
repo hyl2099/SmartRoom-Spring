@@ -22,6 +22,7 @@ public class Picture {
     @Basic(fetch = FetchType.LAZY)
     @Column(name=" photo", columnDefinition="longblob", nullable=true)
     private byte[] photo;
+    private String image;
     private String remark;
 
 
@@ -83,4 +84,11 @@ public class Picture {
         this.remark = remark;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

@@ -72,14 +72,10 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("        ------- users");
 
 
-        File file = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\1.jpg");
-        File file2 = new File("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures\\2.jpg");
         try {
-            byte[] p1 = new byte[(int) file.length()];
-            byte[] p2 = new byte[(int) file2.length()];
             Picture[] picture = {
-                    new Picture("yuling", new Date(),"/pictures/1.jpg", p1,"init"),
-                    new Picture("yuling", new Date(),"/pictures/2.jpg", p2,"init")
+                    new Picture("yuling", new Date(),"/pictures/1.jpg", null,"init"),
+                    new Picture("yuling", new Date(),"/pictures/2.jpg", null,"init")
             };
             this.pictureRepository.saveAll(Arrays.asList(picture));
             LogManager.getLogger(this.getClass()).warn("        ------- picture");
