@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ListController {
+public class PictureUploadController {
     PictureRepository pictureRepository;
 
     @Autowired
-    public ListController(PictureRepository pictureRepository) {
+    public PictureUploadController(PictureRepository pictureRepository) {
         this.pictureRepository = pictureRepository;
     }
 

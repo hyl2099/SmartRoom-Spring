@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,8 @@ public class SpringServerApplication {
 	@Bean
 	MultipartConfigElement multipartConfigElement(){
 		MultipartConfigFactory factory = new MultipartConfigFactory();
+		////文件最大
+		factory.setMaxFileSize(DataSize.parse("5MB"));
 		factory.setLocation("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures");
 		return factory.createMultipartConfig();
 	}

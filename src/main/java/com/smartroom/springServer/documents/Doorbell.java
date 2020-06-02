@@ -9,7 +9,6 @@ public class Doorbell {
     @GeneratedValue
     private Long id;
     private Date ringTime;
-
     private Long picture;
 
     protected Doorbell() { }

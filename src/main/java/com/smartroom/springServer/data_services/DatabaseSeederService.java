@@ -88,8 +88,6 @@ public class DatabaseSeederService {
         }
 
 
-
-
         Video[] video = {
                 new Video("aaa", new Date(),"------------"),
                 new Video("bbb", new Date(),"------------")
@@ -98,8 +96,8 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("        ------- video");
 
         Doorbell[] doorbell = {
-                new Doorbell(new Date(),(long)1),
-                new Doorbell(new Date(),(long)2)
+                new Doorbell(new Date(),(long)4),
+                new Doorbell(new Date(),(long)5)
         };
         this.doorbellRepository.saveAll(Arrays.asList(doorbell));
         LogManager.getLogger(this.getClass()).warn("        ------- doorbell");

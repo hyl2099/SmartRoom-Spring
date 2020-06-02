@@ -148,7 +148,10 @@ public class PictureResource {
     @GetMapping("/getImages")
     public ResponseEntity<List<String>> getImages() throws IOException {
         List<String> images = new ArrayList<String>();
-        String filepath = context.getRealPath("/images");
+        // 在使用ServletContext.getRealPath() 时，传入的参数是从 当前servlet 部署在tomcat中的文件夹算起的相对路径，要以"/" 开头，否则会找不到路径，导致NullPointerException
+        // 此处是 从src/webapp开始
+        //String filepath = context.getRealPath("/images");
+        String filepath = "D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures\\pictures";
         File fileFolder = new File(filepath);
         if(fileFolder!=null){
             for(final File file : fileFolder.listFiles()){

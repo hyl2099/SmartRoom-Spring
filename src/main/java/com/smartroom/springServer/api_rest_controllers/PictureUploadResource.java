@@ -1,6 +1,6 @@
 package com.smartroom.springServer.api_rest_controllers;
 
-import com.smartroom.springServer.business_controllers.ListController;
+import com.smartroom.springServer.business_controllers.PictureUploadController;
 import com.smartroom.springServer.documents.Picture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,12 +16,12 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/pictures")
-public class ListResource {
-    private ListController listController;
+public class PictureUploadResource {
+    private PictureUploadController pictureUploadController;
 
     @Autowired
-    public ListResource(ListController listController) {
-        this.listController = listController;
+    public PictureUploadResource(PictureUploadController pictureUploadController) {
+        this.pictureUploadController = pictureUploadController;
     }
 
 
@@ -42,6 +42,7 @@ public class ListResource {
         String originaFilename = file.getOriginalFilename();
         //获取文件的后缀名
         String newFileName = res+originaFilename.substring(originaFilename.lastIndexOf("."));
+        // 跟目录设置是在SpringServerApplication 中的MultipartConfigElement中设置的。
         String rootPath = "/pictures/";
         File newFile = new File(rootPath+newFileName);
         System.out.println(rootPath+newFileName);
@@ -56,7 +57,8 @@ public class ListResource {
             //使用transferTo()方法将文件存到所在服务器上
             file.transferTo(newFile);
         }
-        picture.setPhoto(Files.readAllBytes(Paths.get("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures"+rootPath+newFileName)));
-        return listController.add(src,picture);
+        //用来把图片转成二进制数据存进数据库。其实没必要
+        //picture.setPhoto(Files.readAllBytes(Paths.get("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures"+rootPath+newFileName)));
+        return pictureUploadController.add(src,picture);
     }
 }
