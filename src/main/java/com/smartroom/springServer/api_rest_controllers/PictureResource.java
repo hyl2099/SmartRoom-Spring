@@ -106,14 +106,13 @@ public class PictureResource {
     }
 
 
-
     // @PutMapping 表明该方法只接收 put 请求.
     @PutMapping("/pictures/{id}")
     public Picture updatePicture(@PathVariable Long id,@RequestBody Picture picture){
         return this.pictureController.updatePicture(id, picture);
     }
 
-    @DeleteMapping("/pictures/{id}")
+    @DeleteMapping("/pictures/delete/{id}")
     public void deletePicture(@PathVariable Long id) {
         this.pictureController.deletePicture(id);
     }
