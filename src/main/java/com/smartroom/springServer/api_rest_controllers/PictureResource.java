@@ -107,9 +107,9 @@ public class PictureResource {
 
 
     // @PutMapping 表明该方法只接收 put 请求.
-    @PutMapping("/pictures/{id}")
-    public Picture updatePicture(@PathVariable Long id,@RequestBody Picture picture){
-        return this.pictureController.updatePicture(id, picture);
+    @PatchMapping("/pictures/update/{id}")
+    public int updatePicture(@PathVariable Long id,@RequestBody Picture picture){
+        return this.pictureController.updateOwnerOrRemark(picture.getId(),picture.getRemark(),picture.getOwner());
     }
 
     @DeleteMapping("/pictures/delete/{id}")

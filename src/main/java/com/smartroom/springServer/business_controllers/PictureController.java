@@ -37,6 +37,25 @@ public class PictureController {
         return this.pictureRepository.findByOwner(owner);
     }
 
+    public int updateOwnerOrRemark(Long id, String owner,String remark) throws EntityNotFoundException {
+        // 判断是否存在该实体，如果不存在，则报错
+        if (pictureRepository.findById(id) == null) {
+            throw new EntityNotFoundException("the ID :" + id.toString() + "Wrong, no entity.");
+
+        }
+        if(remark == "" && owner !=""){
+            this.pictureRepository.updatePictureOwner(owner,id);
+            return 1;
+        }else if(remark!="" && owner ==""){
+            this.pictureRepository.updatePictureRemark(remark,id);
+            return 1;
+        }else if(remark != "" && owner!= ""){
+            this.pictureRepository.updatePictureOwnerAndRemark(owner,remark,id);
+            return 1;
+        }else {return 0;}
+    }
+
+
 
     public Picture updatePicture(Long id, Picture picture) throws EntityNotFoundException {
         // 判断是否存在该实体，如果不存在，则报错
