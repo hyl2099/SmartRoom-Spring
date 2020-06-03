@@ -22,7 +22,7 @@ public class PictureController {
         this.photoService = photoService;
     }
 
-    public Iterable<Picture> readAll() {
+    public Iterable<Picture> readAll(){
         return this.pictureRepository.findAll();
     }
 
@@ -33,6 +33,10 @@ public class PictureController {
     public Optional<Picture> findPictureById(Long id){
         return this.pictureRepository.findById(id);
     }
+    public Iterable<Picture> findPictureByOwner(String owner){
+        return this.pictureRepository.findByOwner(owner);
+    }
+
 
     public Picture updatePicture(Long id, Picture picture) throws EntityNotFoundException {
         // 判断是否存在该实体，如果不存在，则报错

@@ -71,11 +71,13 @@ public class DatabaseSeederService {
         this.userRepository.saveAll(Arrays.asList(users));
         LogManager.getLogger(this.getClass()).warn("        ------- users");
 
-
         try {
             Picture[] picture = {
                     new Picture("yuling", new Date(),"/pictures/1.jpg", null,"init"),
-                    new Picture("yuling", new Date(),"/pictures/2.jpg", null,"init")
+                    new Picture("yulingyuling000", new Date(),"/pictures/2.jpg", null,"init"),
+                    new Picture("yuling", new Date(),"/pictures/3.jpg", null,"init"),
+                    new Picture("yulingyuling000", new Date(),"/pictures/4.jpg", null,"init"),
+                    new Picture("yuling", new Date(),"/pictures/5.jpg", null,"init")
             };
             this.pictureRepository.saveAll(Arrays.asList(picture));
             LogManager.getLogger(this.getClass()).warn("        ------- picture");
