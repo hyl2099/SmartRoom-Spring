@@ -27,4 +27,9 @@ public class TemperatureResource {
         return temperatureController.readAll();
     }
 
+    @DeleteMapping("/temperature/delete/{id}")
+    public void deleteTemperature(@PathVariable Long id) {
+        this.temperatureController.deleteTemperature(id);
+    }
+
 }

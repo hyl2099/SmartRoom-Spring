@@ -23,4 +23,8 @@ public class TemperatureController {
         return this.temperatureRepository.save(t);
     }
 
+    public void deleteTemperature (Long id){
+        this.temperatureRepository.deleteById(id);
+    }
+
 }
