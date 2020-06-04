@@ -22,13 +22,16 @@ public class PictureController {
         this.photoService = photoService;
     }
 
+    //因为涉及到图片，没有用到
     public Iterable<Picture> readAll(){
         return this.pictureRepository.findAll();
     }
 
+    //post一个picture，因为涉及到图片，没有用到
     public Picture savePicture(Picture picture){
         return this.pictureRepository.save(picture);
     }
+
 
     public Optional<Picture> findPictureById(Long id){
         return this.pictureRepository.findById(id);
@@ -37,6 +40,7 @@ public class PictureController {
         return this.pictureRepository.findByOwner(owner);
     }
 
+    //这个是patch更新所有字段，不需要传递整个picture对象
     public int updateOwnerOrRemark(Long id, String owner,String remark) throws EntityNotFoundException {
         // 判断是否存在该实体，如果不存在，则报错
         if (pictureRepository.findById(id) == null) {
@@ -56,7 +60,7 @@ public class PictureController {
     }
 
 
-
+    //这个是put更新所有字段，需要传递整个picture对象,实际没有用到
     public Picture updatePicture(Long id, Picture picture) throws EntityNotFoundException {
         // 判断是否存在该实体，如果不存在，则报错
         if (pictureRepository.findById(id) == null) {
@@ -67,11 +71,12 @@ public class PictureController {
         return this.pictureRepository.save(picture);
     }
 
+
     public void deletePicture(Long id) {
         this.pictureRepository.deleteById(id);
     }
 
-    //注解管理事务的实现步骤
+    //注解管理事务的实现步骤，一开始用到了，放在这作为以后参考。
     @Transactional
     public Optional<byte[]> getPhoto(Long id) {
         return pictureRepository.findById(id).map(picture -> photoService.readPhoto(picture.getPath()));

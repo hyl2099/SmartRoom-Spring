@@ -34,17 +34,18 @@ public class PictureResource {
     }
 
     // 设置路由
-    @RequestMapping("/pictures/save")
     // 使用@RequestBody注解，将请求的`json`数据，直接加载至Picture对象
+    // 因为有图片，实际没有用到
+    @RequestMapping("/pictures/save")
     public Picture savePicture(@RequestBody Picture picture) {
         // 打印加载的数据
         System.out.println(picture);
-
         // 调用保存操作
         return pictureController.savePicture(picture);
     }
 
     // @GetMapping 表明该方法只接收 get 请求.
+    //根据图片Id返回图片的所有信息。
     @GetMapping("/pictures/id/{id}")
     public ResponseEntity<Picture> findPictureById(@PathVariable Long id) throws IOException{
         Picture picture;
@@ -111,14 +112,14 @@ public class PictureResource {
     public int updatePicture(@PathVariable Long id,@RequestBody Picture picture){
         return this.pictureController.updateOwnerOrRemark(picture.getId(),picture.getRemark(),picture.getOwner());
     }
-
+    //删除一个图片，目前仅删除数据库，没有删除图片文件
     @DeleteMapping("/pictures/delete/{id}")
     public void deletePicture(@PathVariable Long id) {
         this.pictureController.deletePicture(id);
     }
 
 
-//    // 根据ID 返回仅仅图片文件
+//    // 根据ID 返回仅仅图片文件,没有用到
 //    @GetMapping("/picturesphoto/{id}")
 //    public ResponseEntity<String> getPhotoById (@PathVariable Long id) throws IOException{
 //        String images = null;
@@ -142,7 +143,7 @@ public class PictureResource {
 //        return new ResponseEntity(images, HttpStatus.OK);
 //    }
 
-    //获取资源文件夹中全部图片的list。
+    //获取资源文件夹中全部图片的list。没有用到
     @GetMapping("/getImages")
     public ResponseEntity<List<String>> getImages() throws IOException {
         List<String> images = new ArrayList<String>();

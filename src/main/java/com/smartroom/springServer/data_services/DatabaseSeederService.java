@@ -2,16 +2,14 @@ package com.smartroom.springServer.data_services;
 
 
 import com.smartroom.springServer.documents.*;
-import com.smartroom.springServer.repositories.DoorbellRepository;
 import com.smartroom.springServer.repositories.PictureRepository;
 import com.smartroom.springServer.repositories.UserRepository;
-import com.smartroom.springServer.repositories.VideoRepository;
+import com.smartroom.springServer.repositories.TemperatureRepository;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
@@ -27,17 +25,15 @@ public class DatabaseSeederService {
 
 
     private PictureRepository pictureRepository;
-    private VideoRepository videoRepository;
-    private DoorbellRepository doorbellRepository;
+    private TemperatureRepository temperatureRepository;
     private UserRepository userRepository;
 
     //自动注入PictureRepository,VideoRepository,DoorbellRepository
     @Autowired
-    public DatabaseSeederService(UserRepository userRepository, PictureRepository pictureRepository,VideoRepository videoRepository,DoorbellRepository doorbellRepository){
+    public DatabaseSeederService(UserRepository userRepository, PictureRepository pictureRepository,TemperatureRepository temperatureRepository){
         this.userRepository = userRepository;
         this.pictureRepository = pictureRepository;
-        this.videoRepository = videoRepository;
-        this.doorbellRepository = doorbellRepository;
+        this.temperatureRepository = temperatureRepository;
     }
 
     @PostConstruct
@@ -55,8 +51,7 @@ public class DatabaseSeederService {
         // Delete Repositories -----------------------------------------------------
         this.userRepository.deleteAll();
         this.pictureRepository.deleteAll();
-        this.videoRepository.deleteAll();
-        this.doorbellRepository.deleteAll();
+        this.temperatureRepository.deleteAll();
         this.initialize();
     }
 
@@ -86,18 +81,11 @@ public class DatabaseSeederService {
         }
 
 
-        Video[] video = {
-                new Video("aaa", new Date(),"------------"),
-                new Video("bbb", new Date(),"------------")
+        Temperature[] temperature = {
+                new Temperature(30,50,new Date()),
+                new Temperature(1,70,new Date())
         };
-        this.videoRepository.saveAll(Arrays.asList(video));
-        LogManager.getLogger(this.getClass()).warn("        ------- video");
-
-        Doorbell[] doorbell = {
-                new Doorbell(new Date(),(long)4),
-                new Doorbell(new Date(),(long)5)
-        };
-        this.doorbellRepository.saveAll(Arrays.asList(doorbell));
-        LogManager.getLogger(this.getClass()).warn("        ------- doorbell");
+        this.temperatureRepository.saveAll(Arrays.asList(temperature));
+        LogManager.getLogger(this.getClass()).warn("        ------- temperature");
     }
 }

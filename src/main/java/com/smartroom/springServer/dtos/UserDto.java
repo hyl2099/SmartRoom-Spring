@@ -43,7 +43,6 @@ public class UserDto extends UserMinimumDto {
                 ", username='" + this.getUsername() + '\'' +
                 ", email='" + email + '\'' +
                 ", active=" + active +
-                ", roles=" + Arrays.toString(this.getRoles()) +
                 '}';
     }
 }

@@ -18,6 +18,7 @@ public class Picture {
     private Date uploadTime;
     private String path;
     //@Lob 通常与@Basic同时使用，提高访问速度
+    //实际上是存储了路径，然后从路径读取byte文件返回到前段，没有用到。
     @Lob
     @Basic(fetch = FetchType.LAZY)
     @Column(name=" photo", columnDefinition="longblob", nullable=true)
