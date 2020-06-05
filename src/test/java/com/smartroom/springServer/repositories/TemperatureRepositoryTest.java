@@ -19,7 +19,7 @@ public class TemperatureRepositoryTest {
     @Test
     public void addVideo() {
         // 执行数据保存操作
-        temperatureRepository.save(new Temperature(12,34,new Date()));
+        temperatureRepository.save(new Temperature(14,12,34,50,new Date()));
         System.out.println(temperatureRepository);
     }
 }

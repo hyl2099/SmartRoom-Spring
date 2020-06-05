@@ -82,8 +82,8 @@ public class DatabaseSeederService {
 
 
         Temperature[] temperature = {
-                new Temperature(30,50,new Date()),
-                new Temperature(1,70,new Date())
+                new Temperature(36,30,50,70,new Date()),
+                new Temperature(25,1,70,90,new Date())
         };
         this.temperatureRepository.saveAll(Arrays.asList(temperature));
         LogManager.getLogger(this.getClass()).warn("        ------- temperature");

@@ -7,46 +7,50 @@ import java.util.Date;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TemperatureDto {
-    private Long id;
-    private float temperature;
-    private float humidity;
+    private float temperatureIndoor;
+    private float humidityIndoor;
+    private float temperatureOutdoor;
+    private float humidityOutdoor;
     private Date time;
 
-    public TemperatureDto(TemperatureDto temperatureDto) {
-        this.id = temperatureDto.id;
-        this.temperature = temperatureDto.temperature;
-        this.humidity = temperatureDto.humidity;
-        this.time = temperatureDto.time;
-    }
-
-    public TemperatureDto(float temperature, float humidity, Date time) {
-        this.temperature = temperature;
-        this.humidity = humidity;
+    public TemperatureDto(float temperatureIndoor, float humidityIndoor, float temperatureOutdoor, float humidityOutdoor, Date time) {
+        this.temperatureIndoor = temperatureIndoor;
+        this.humidityIndoor = humidityIndoor;
+        this.temperatureOutdoor = temperatureOutdoor;
+        this.humidityOutdoor = humidityOutdoor;
         this.time = time;
     }
 
-    public Long getId() {
-        return id;
+    public float getTemperatureIndoor() {
+        return temperatureIndoor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setTemperatureIndoor(float temperatureIndoor) {
+        this.temperatureIndoor = temperatureIndoor;
     }
 
-    public float getTemperature() {
-        return temperature;
+    public float getHumidityIndoor() {
+        return humidityIndoor;
     }
 
-    public void setTemperature(float temperature) {
-        this.temperature = temperature;
+    public void setHumidityIndoor(float humidityIndoor) {
+        this.humidityIndoor = humidityIndoor;
     }
 
-    public float getHumidity() {
-        return humidity;
+    public float getTemperatureOutdoor() {
+        return temperatureOutdoor;
     }
 
-    public void setHumidity(float humidity) {
-        this.humidity = humidity;
+    public void setTemperatureOutdoor(float temperatureOutdoor) {
+        this.temperatureOutdoor = temperatureOutdoor;
+    }
+
+    public float getHumidityOutdoor() {
+        return humidityOutdoor;
+    }
+
+    public void setHumidityOutdoor(float humidityOutdoor) {
+        this.humidityOutdoor = humidityOutdoor;
     }
 
     public Date getTime() {
