@@ -16,9 +16,9 @@ public class TemperatureResource {
         this.temperatureController = videoController;
     }
 
-    // 设置路由
+
     @RequestMapping("/temperature/save")
-    public Temperature saveVideo(@RequestBody Temperature temperature) {
+    public Temperature saveTemperature(@RequestBody Temperature temperature) {
         return temperatureController.saveTemperature(temperature);
     }
 

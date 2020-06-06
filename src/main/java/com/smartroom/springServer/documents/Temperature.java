@@ -1,5 +1,7 @@
 package com.smartroom.springServer.documents;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 @Entity
@@ -11,6 +13,7 @@ public class Temperature {
     private float humidityIndoor;
     private float temperatureOutdoor;
     private float humidityOutdoor;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+2")
     private Date time;
 
     public Temperature() {
