@@ -227,9 +227,8 @@ public class PictureResource {
         //使用时间给上传的文件命名，这种方式没有用uuid命名好，因为同一时间有可能会上传多个文件
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSS");
         String res = sdf.format(new Date());
-        String originaFilename = file.getOriginalFilename();
         //获取文件的后缀名
-        String newFileName = res+originaFilename.substring(originaFilename.lastIndexOf("."));
+        String newFileName = res+".jpg";
         // 跟目录设置是在SpringServerApplication 中的MultipartConfigElement中设置的。
         String rootPath = "/pictures/";
         File newFile = new File(rootPath+newFileName);
