@@ -122,58 +122,6 @@ public class PictureResource {
     }
 
 
-//    // 根据ID 返回仅仅图片文件,没有用到
-//    @GetMapping("/picturesphoto/{id}")
-//    public ResponseEntity<String> getPhotoById (@PathVariable Long id) throws IOException{
-//        String images = null;
-//        String filepath = this.pictureController.findPictureById(id).get().getPath();
-//        String fileFolderPath = "D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures";
-//        File file = new File(fileFolderPath + filepath);
-//        if(!file.isDirectory()){
-//            String encodeBase64 = null;
-//            try{
-//                String extension = FilenameUtils.getExtension(file.getName());
-//                FileInputStream fileInputStream = new FileInputStream(file);
-//                byte[] bytes = new byte[(int)file.length()];
-//                fileInputStream.read(bytes);
-//                encodeBase64 = Base64.getEncoder().encodeToString(bytes);
-//                images = "data:image/"+extension+";base64,"+encodeBase64;
-//                fileInputStream.close();
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return new ResponseEntity(images, HttpStatus.OK);
-//    }
-
-    //获取资源文件夹中全部图片的list。没有用到
-    @GetMapping("/getImages")
-    public ResponseEntity<List<String>> getImages() throws IOException {
-        List<String> images = new ArrayList<String>();
-        String filepath = context.getRealPath("/images");
-        File fileFolder = new File(filepath);
-        if(fileFolder!=null){
-            for(final File file : fileFolder.listFiles()){
-                if(!file.isDirectory()){
-                    String encodeBase64 = null;
-                    try{
-                        String extension = FilenameUtils.getExtension(file.getName());
-                        FileInputStream fileInputStream = new FileInputStream(file);
-                        byte[] bytes = new byte[(int)file.length()];
-                        fileInputStream.read(bytes);
-                        encodeBase64 = Base64.getEncoder().encodeToString(bytes);
-                        images.add("data:image/"+extension+";base64,"+encodeBase64);
-                        fileInputStream.close();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        return new ResponseEntity<List<String>>(images, HttpStatus.OK);
-    }
-
-
     //获取全部图片全部信息。
     @GetMapping("/pictures")
     public ResponseEntity<List<Picture>> getPictures() throws IOException {

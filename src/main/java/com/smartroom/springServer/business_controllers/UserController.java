@@ -79,19 +79,8 @@ public class UserController {
         }
     }
 
-//    public User changePassword(String email, UserCredentialDto userCredentialDto) {
-//        if (userRepository.findByEmail(email) == null) {
-//            throw new EntityNotFoundException("the email :" + email.toString() + "Wrong, no entity.");
-//        }else{
-//
-//        }
-//    }
-
     public SmartUser findByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
 
-//    public User findByEmailOrUsername(User user) {
-//        return this.userRepository.findByEmailOrUsername(user);
-//    }
 }

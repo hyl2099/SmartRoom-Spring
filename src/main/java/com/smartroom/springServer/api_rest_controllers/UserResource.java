@@ -58,19 +58,4 @@ public class UserResource {
         return userController.updateUser(email, user);
     }
 
-//    @PatchMapping(value = "/password" + EMAIL_ID)
-//    public User changePassword(@PathVariable String email, @Valid @RequestBody UserCredentialDto userCredentialDto) {
-//        return null;
-//    }
-
-
-//    @GetMapping(value = SEARCH)
-//    public User findByMobileOrUsernameOrDniOrAddress(@RequestParam(required = false) String email,
-//                                                              @RequestParam(required = false) String username) {
-//        User user = new User();
-//        user.setEmail(email);
-//        user.setUsername(username);
-//        return this.userController.findByEmailOrUsername(user);
-//    }
-
 }

@@ -50,8 +50,8 @@ public class DatabaseSeederService {
         LogManager.getLogger(this.getClass()).warn("------- Delete All -----------");
         // Delete Repositories -----------------------------------------------------
         this.userRepository.deleteAll();
-        this.pictureRepository.deleteAll();
-        this.temperatureRepository.deleteAll();
+        //this.pictureRepository.deleteAll();
+        //this.temperatureRepository.deleteAll();
         this.initialize();
     }
 
