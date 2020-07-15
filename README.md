@@ -1,6 +1,6 @@
 # SmartRoom-Spring
 
-# 1，添加jpa、mysql模块
+## 1，添加jpa、mysql模块
 
 <dependencies>
         <dependency>
@@ -29,13 +29,13 @@
 
 配置以下信息：
 
-# 在项目初始化时，重新创建数据表
+## #在项目初始化时，重新创建数据表
 spring.jpa.hibernate.ddl-auto=create
-# 指定连接的类型为mysql 连接的地址为：localhost 端口为3306 ，数据为springmvc
+## #指定连接的类型为mysql 连接的地址为：localhost 端口为3306 ，数据为springmvc
 spring.datasource.url=jdbc:mysql://localhost:3306/springmvc
-# 用户名为root
+## #用户名为root
 spring.datasource.username=root
-# 密码为空
+## #密码为空
 spring.datasource.password=
     
     运行 SpringServerApplication
@@ -45,7 +45,7 @@ spring.datasource.password=
 
 
 
-# 2,创建数据表
+## 2,创建数据表
 
 SpringMVC中集成了hibernate框架，所以在SrpingMVC,有关关系型数据库的部分，我们完全可以参考hibernate的开发文档。hibernate为我们提供了这样一个功能：将带有相关注解的java类自动与数据表进行关系。从而使我们可以完全的使用java代码来定义数据表。这样的做的优点当然很多，对于我们而言，我们再也不需要为了数据表不统一造成的各种莫名BUG而烦恼了。
 
