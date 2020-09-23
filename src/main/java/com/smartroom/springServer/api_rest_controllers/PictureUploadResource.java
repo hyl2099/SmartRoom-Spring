@@ -58,7 +58,7 @@ public class PictureUploadResource {
             file.transferTo(newFile);
         }
         //用来把图片转成二进制数据存进数据库。其实没必要
-        //picture.setPhoto(Files.readAllBytes(Paths.get("D:\\UPM_MASTER_MIW\\mater_MIW_UPM\\10-TFM\\SmartRoom-Pictures"+rootPath+newFileName)));
+        //picture.setPhoto(Files.readAllBytes(Paths.get("D:\\SmartRoom-Pictures"+rootPath+newFileName)));
         return pictureUploadController.add(src,picture);
     }
 }
